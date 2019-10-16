@@ -6,5 +6,5 @@ print("floor(a / b): \n" , "100/3=" , math.floor(100/3) ,"\n", "2/3=" ,  math.fl
                                                                                                                                                              ) , "\n") 
 
 #Opcja dzielenia bez reszty zwraca wynik dzielenia, ucinajac przy tym liczby po przecinku
-#Opcja round(float) zaokragla liczbe do x cyfr po przecinku (zmienna float moze miec maksymalnie 16 cyfr po przecinku
+#Opcja round(float) zaokragla liczbe do x cyfr po przecinku 
 #Opcja floor(float) zwraca liczbe calkowita mniejsza badz rowna liczbie x
