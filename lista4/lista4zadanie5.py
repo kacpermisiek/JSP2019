@@ -13,3 +13,5 @@ while koniec is False: #Petla dodajaca liczby do listy
 def funkcja(*lista): 
     print (list(permutations(lista)))
     
+wynik = funkcja(*lista)
+print(wynik)
