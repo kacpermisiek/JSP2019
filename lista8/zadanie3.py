@@ -91,6 +91,11 @@ def pesel():
 	print('%02d' % day, end='')
 	print(four_random, end='')
 	print(last_digit)
+	final = str(a+b+c+d+e+f+g+h+i+j+last_digit)
+	return final
+	
 
-for i in range(10):
-    pesel()
+
+for i in range(0,10):
+        with open('PESEL.txt', 'a') as plik:
+                plik.write(pesel())
