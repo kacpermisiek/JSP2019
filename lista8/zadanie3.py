@@ -52,8 +52,7 @@ def pesel():
     cyfra8 = str(random.randint(0,9))
     cyfra9 = str(random.randint(0,9))
     cyfra10 = str(random.randint(0,9))
-
-    cyfra11 = (9*(int(cyfra1))+7*(int(cyfra2))+3*(int(cyfra3))+1*(int(cyfra4))+9*(int(cyfra5))+7*(int(cyfra6))+3*(int(cyfra7))+1*(int(cyfra8))+9*(int(cyfra9))+7*(int(cyfra10)))
+    cyfra11 = 9*int(cyfra1)+7*int(cyfra2)+3*int(cyfra3)+int(cyfra4)+9*int(cyfra5)+7*int(cyfra6)+3*int(cyfra7)+int(cyfra8)+9*int(cyfra9)+7*int(cyfra10)
     scyfra11 = str(cyfra11)
     scyfra11=scyfra11[-1]
     PESEL = str(cyfra1+cyfra2+cyfra3+cyfra4+cyfra5+cyfra6+cyfra7+cyfra8+cyfra9+cyfra10+scyfra11)
