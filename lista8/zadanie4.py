@@ -55,5 +55,8 @@ else:
     imiesiac = int(miesiac)
 
 rok += c1+c2
-
+f2= open('PESEL2.txt','w')
 print("nr PESEL: {}\nData urodzenia: {}-{}-{};   płeć: {}".format(PESEL,dzien,imiesiac,rok,plec))
+zmienna = ("nr PESEL: {}\nData urodzenia: {}-{}-{};   płeć: {}".format(PESEL,dzien,imiesiac,rok,plec))
+f2.write(zmienna)
+f2.close()
