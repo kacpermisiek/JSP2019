@@ -1,101 +1,67 @@
 import random
+import os
+
+def czyPrzestepny(rok):
+    return (rok % 4 == 0) and (rok % 100 != 0) or (rok % 400 == 0)
+
 
 def pesel():
+    rok = random.randint(1800,2099)
+    miesiac = random.randint(1,12)
+    srok = str(rok)
+    if miesiac in [1,3,5,7,8,10,12]: x=31
+    elif miesiac in [4,6,9,11]: x=30
+    else:
+        if czyPrzestepny(rok) is False: x = 28
+        else: x=29
+    dzien = random.randint(1,x)
+    sdzien = str(dzien)
+    
+    if rok < 1900:
+        miesiac += 80
+        
+    elif rok < 2000:
+        miesiac += 0
+    elif rok < 2100:
+        miesiac += 20
+    else:
+        miesiac += 40
+ 
 
-	year = random.randint(1900,2099)
+    smiesiac = str(miesiac)
 
-
-	if year <= 1999:
-		month = random.randint(1,12)
-
-	elif year >= 2000:
-		month = random.randint(1,12) + 20 # to distinguish between centuries
-
-
-	# I need to put months in a category to choose correct range of possible days for each one
-	odd_months = (1, 3, 5, 7, 8, 10, 12, 21, 23, 25, 27, 28, 30, 32)
-	even_months = (4, 6, 9, 11, 24, 26, 29, 31)
-
-	if month in odd_months:
-		day = random.randint(1,31)
-
-	elif month in even_months:
-		day = random.randint(1,30)		
-	# this is for february
-	else:
-		if year % 4 == 0 and year != 1900:
-			day = random.randint(1,29) # leap year
-
-		else:
-			day = random.randint(1,28) # usual year
-
-
-
-
-
-	four_random = random.randint(1000,9999)
-	four_random = str(four_random)
-
+    
+    cyfra1 = srok[2]
+    cyfra2 = srok[3]
+    if miesiac < 10:
+        cyfra3=str(0)
+        cyfra4=smiesiac
+    else:
+        cyfra3 = smiesiac[0]
+        cyfra4 = smiesiac[1]
 
 
+    if dzien <10:
+        cyfra5 = str(0)
+        cyfra6 = sdzien
+    else:
+        cyfra5 = sdzien[0]
+        cyfra6 = sdzien[1]
 
-	# here comes the equation part, it calculates the last digit
+    cyfra7 = str(random.randint(0,9))
+    cyfra8 = str(random.randint(0,9))
+    cyfra9 = str(random.randint(0,9))
+    cyfra10 = str(random.randint(0,9))
 
-	y = '%02d' % (year % 100)
-	m = '%02d' % month
-	dd = '%02d' % day
+    cyfra11 = (9*(int(cyfra1))+7*(int(cyfra2))+3*(int(cyfra3))+1*(int(cyfra4))+9*(int(cyfra5))+7*(int(cyfra6))+3*(int(cyfra7))+1*(int(cyfra8))+9*(int(cyfra9))+7*(int(cyfra10)))
+    scyfra11 = str(cyfra11)
+    scyfra11=scyfra11[-1]
+    PESEL = str(cyfra1+cyfra2+cyfra3+cyfra4+cyfra5+cyfra6+cyfra7+cyfra8+cyfra9+cyfra10+scyfra11)
+    return PESEL
+    
 
-	a = y[0]
-	a = int(a)
-
-	b = y[1]
-	b = int(b)
-
-	c = m[0]
-	c = int(c)
-
-	d = m[1]
-	d = int(d)
-
-	e = dd[0]
-	e = int(e)
-
-	f = dd[1]
-	f = int(f)
-
-	g = four_random[0]
-	g = int(g)
-
-	h = four_random[1]
-	h = int(h)
-
-	i = four_random[2]
-	i = int(i)
-
-	j = four_random[3]
-	j = int(j)
-
-	check = a + 3 * b + 7 * c + 9 * d + e + 3 * f + 7 * g + 9 * h + i + 3 * j
-
-	if check % 10 == 0:
-		last_digit = 0
-	else:
-		last_digit = 10 - (check % 10)
-
-
-
-	# printing the final number out
-
-	print('%02d' % (year % 100), end='')
-	print('%02d' % month, end='')
-	print('%02d' % day, end='')
-	print(four_random, end='')
-	print(last_digit)
-	final = str(a+b+c+d+e+f+g+h+i+j+last_digit)
-	return final
-	
-
-
+f1 = open('PESEL.txt', 'w')
 for i in range(0,10):
-        with open('PESEL.txt', 'a') as plik:
-                plik.write(pesel())
+    f1.write(pesel())
+    f1.write('\n')
+f1.close() 
