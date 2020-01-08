@@ -33,10 +33,10 @@ class Kurs:
             wyb = int(input())
             if wyb == 1:
                 wynik = kasa/cur[nazwa]
-                print("\n{} {} = {:.3f} PLN\n".format(kasa, nazwa, wynik))
+                print("\n{} {} = {:.3f} PLN\n".format(wynik, nazwa, kasa))
             else:
                 wynik = kasa*cur[nazwa]
-                print("\n{} PLN = {:.3f} {}\n".format(kasa,wynik,nazwa))
+                print("\n{} {}={:.3f} PLN \n".format(kasa,nazwa,wynik))
             return wynik
         else:
             print("Nie znaleziono waluty")
@@ -71,7 +71,7 @@ while menu!=0:
     menu = int(input())
     if menu == 1:
           a = Kurs(sciezka).wszystkie_kursy()
-          print(a)
+          
     if menu == 2:
           a = Kurs(sciezka).PLN_convert()
     if menu == 3:
